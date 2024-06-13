@@ -1,3 +1,4 @@
+#https://www.freecodecamp.org/learn/scientific-computing-with-python/#learn-string-manipulation-by-building-a-cipher
 text = 'mrttaqrhknsw ih puggrur'
 custom_key = 'happycoding'
 
