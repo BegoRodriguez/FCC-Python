@@ -12,14 +12,14 @@ def arithmetic_arranger(problems, show_answers=False):
     if len(problems)>5:
         return 'Error: Too many problems.'
 
-    # Para llegar a hacer esto debería descomponer cada elemento del array
+    # Gestiono cada fila por separado, luego las uno al final
     first_row = ""
     second_row = ""
     third_row = ""
     fourth_row = ""
     for problem in problems:
 
-          ## Igual podría usar finds en vez de un bucle
+        # Uso finds en vez de un bucle
         primer_espacio = problem.find(" ")
         primer_operando = problem[0:primer_espacio]        
         # Tengo que añadir 1 para que busque el siguiente espacio
@@ -38,7 +38,6 @@ def arithmetic_arranger(problems, show_answers=False):
 
         """Each number (operand) should only contain digits. Otherwise, 
         the function will return: 'Error: Numbers must only contain digits.'"""
-        # ¿Cómo compruebo esto?
         if not(primer_operando.isdigit()) or not(segundo_operando.isdigit()):
             return "Error: Numbers must only contain digits."
         
