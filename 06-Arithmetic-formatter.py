@@ -13,11 +13,10 @@ def arithmetic_arranger(problems, show_answers=False):
         return 'Error: Too many problems.'
 
     # Para llegar a hacer esto debería descomponer cada elemento del array
-    operations = []
     first_row = ""
     second_row = ""
     third_row = ""
-
+    fourth_row = ""
     for problem in problems:
 
           ## Igual podría usar finds en vez de un bucle
@@ -52,7 +51,6 @@ def arithmetic_arranger(problems, show_answers=False):
         if len_primer_operando>4 or len_segundo_operando>4 :
            return "Error: Numbers cannot be more than four digits."
 
-
         # Comprobaciones realizadas, paso a formatear
         """If the user supplied the correct format of problems, 
         the conversion you return will follow these rules:
@@ -64,14 +62,12 @@ def arithmetic_arranger(problems, show_answers=False):
         There should be four spaces between each problem.
         There should be dashes at the bottom of each problem. The dashes should run along the entire length of each problem individually. (The example above shows what this should look like.)"""
 
-        
         cadena_aux = "" + operador
         # Primero tengo que ver cual de los dos dígitos es mayor
         if (len_segundo_operando>len_primer_operando):
             
             cadena_aux = cadena_aux + " " + segundo_operando 
             second_row = second_row + cadena_aux + "    "
-
             diff = len(cadena_aux) - len(primer_operando)
 
             for d in range(diff):
@@ -93,7 +89,6 @@ def arithmetic_arranger(problems, show_answers=False):
             # Tendremos que calcular la segunda cadena más detalladamente
             
         else: 
-    
             # Añadimos dos espacios a la primera cadena y el operando
             first_row += "  " + primer_operando + "    " # Los 4 espacios
             cadena_aux = cadena_aux + " " + segundo_operando 
@@ -105,8 +100,21 @@ def arithmetic_arranger(problems, show_answers=False):
             third_row += "-"
         third_row += "    " # Los 4 espacios
 
-    """When the second argument is set to True, the answers should be displayed."""
-
+        """When the second argument is set to True, the answers should be displayed."""
+        # voy a hacer una cuarta fila que solo se rellene si hay que mostrar respuestas
+        if show_answers:
+            first = int(primer_operando)
+            second = int(segundo_operando)
+            resultado = 0
+            if operador == "+":
+                resultado = first+second
+            else:
+                resultado = first-second
+            fourth_row = fourth_row + "  " + str(resultado) + "    " # Los 4 espacios
+    
+    if show_answers:
+        return first_row[:-4]+"\n"+second_row[:-4]+"\n"+third_row[:-4]+"\n"+fourth_row[:-4]
     return first_row[:-4]+"\n"+second_row[:-4]+"\n"+third_row[:-4]
 
 print(f'\n{arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"])}')
+print(f'\n{arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"],True)}')
