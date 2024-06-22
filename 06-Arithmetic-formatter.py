@@ -84,7 +84,7 @@ def arithmetic_arranger(problems, show_answers=False):
             diff = len(primer_operando) - len(segundo_operando)
             for d in range(diff+1):
                 cadena_aux += " "
-            cadena_aux = cadena_aux + segundo_operando # Erroneo
+            cadena_aux = cadena_aux + segundo_operando 
             second_row = second_row + cadena_aux + "    "
             # Tendremos que calcular la segunda cadena más detalladamente
             
@@ -110,7 +110,14 @@ def arithmetic_arranger(problems, show_answers=False):
                 resultado = first+second
             else:
                 resultado = first-second
-            fourth_row = fourth_row + "  " + str(resultado) + "    " # Los 4 espacios
+
+            # Necesito tener cuidado con los espacios
+            cadena_resultado = str(resultado)
+            diff = len_cadena_aux - len(cadena_resultado)
+            for d in range(diff):
+                fourth_row += " "
+            cadena_aux = cadena_aux + segundo_operando 
+            fourth_row += cadena_resultado + "    " # Los 4 espacios
     
     if show_answers:
         return first_row[:-4]+"\n"+second_row[:-4]+"\n"+third_row[:-4]+"\n"+fourth_row[:-4]
@@ -118,3 +125,5 @@ def arithmetic_arranger(problems, show_answers=False):
 
 print(f'\n{arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"])}')
 print(f'\n{arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"],True)}')
+print(f'\n{arithmetic_arranger(["3 + 855", "988 + 40"], True)}')
+print(f'\n{arithmetic_arranger(["32 - 698", "1 - 3801", "45 + 43", "123 + 49", "988 + 40"], True)}')
